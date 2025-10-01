@@ -8,45 +8,48 @@
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="pages/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
-            m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-        ym(88806616, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true,
-            webvisor: true
-        });
+    <script defer>
+    function calculateAge(birthDate) {
+        const t = new Date(), b = new Date(birthDate);
+        let age = t.getFullYear() - b.getFullYear();
+        const m = t.getMonth() - b.getMonth();
+        if (m < 0 || (m === 0 && t.getDate() < b.getDate())) age--;
+        return age;
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        const myAge = calculateAge('1987-06-30');
+        document.getElementById('age').textContent = `${myAge} years old`;
+    });
     </script>
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/88806616" style="position:absolute; left:-9999px;" alt="" /></div>
-    </noscript>
-    <!-- /Yandex.Metrika counter -->
+
+
+
+
+<!-- подключаем библиотеки (можно в head, но с defer) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.4.1/html-docx.js" defer></script>
+
 </head>
 
 <body class="body">
     <header class="header">
-        <a href="https://1drv.ms/b/s!AvKeXhBN05m0k2jjxdmj_yU2e0-f?e=BJ2xz5" class="header__save-to-pdf cv__text"
-            target="_blank">Open in PDF</a>
+         <a href="#" id="downloadDOCX" class="header__save-to-pdf cv__text">Download DOCX</a>
     </header>
     <main class="main">
         <section class="about">
             <img src="./images/__link_photo.png" alt="MyPhoto" class="about__photo">
             <div class="name-section">
                 <h1 class="about__name">Tolstykh Andrei</h1>
-                <p class="about__age">34 years</p>
+                <p class="about__age" id="age">37 years old</p>
             </div>
             <ul class="contacts">
                 <li class="contacts__link">
                     <img src="./images/__link_whatsap.svg" alt="" class="contacts__icon contacts__telephone">
                     <img src="./images/__link_telegram.svg" alt="" class="contacts__icon contacts__telephone">
-                    <p class="contacts__text">+7 (922) 111-34-56</p>
+                    <p class="contacts__text">+49 176 53480027</p>
                 </li>
                 <li class="contacts__link">
                     <img src="./images/__link_mail.svg" alt="email" class="contacts__icon">
@@ -65,25 +68,30 @@
                 </li>
                 <li class="contacts__link">
                     <img src="./images/__link_eng.svg" alt="english" class="contacts__icon contacts__link_right">
-                    <p class="contacts__text">B2/C1: IELTS 6.5 (Academic)</p>
+                    <p class="contacts__text">English: Advanced</p>
                 </li>
                 <li class="contacts__link contacts__link_right">
                     <img src="./images/__link_germany.svg" alt="deutsch" class="contacts__icon contacts__link_right">
-                    <p class="contacts__text">A1</p>
+                    <p class="contacts__text">B1</p>
                 </li>
 
             </ul>
         </section>
 
         <section class="description">
-            <p class="cv__text description__paragraph">I&nbsp;have been designing <span class="cv__text_bold">for
-                    5+&nbsp;years </span> (including 3&nbsp;years of&nbsp;UI/UX). I&nbsp;am the head of&nbsp;design
-                direction in&nbsp;the finance department of&nbsp;the largest bank in&nbsp;Eastern Europe. We&nbsp;are
-                designing a&nbsp;financial platform (web/mobile).</p>
-            <p class="cv__text description__paragraph">My&nbsp;favorite style is&nbsp;a&nbsp;concise, simple,
-                informative and useful design.</p>
-            <p class="cv__text description__paragraph">I&nbsp;am also a&nbsp;student of&nbsp;the largest&nbsp;IT company
-                on&nbsp;a&nbsp;course &laquo;Frontend-development&raquo;.</p>
+            <p class="cv__text description__paragraph">
+                I have been designing <span class="cv__text_bold">for 5+ years</span>, including strong experience in UI/UX. 
+                Currently, I work as a Senior UI/UX Designer in an IT startup, where we are building an 
+                <span class="cv__text_bold">AI Platform for trustworthy and responsible AI</span>.
+            </p>
+            <p class="cv__text description__paragraph">
+                My focus is on creating <span class="cv__text_bold">simple, functional, and user-friendly design</span> 
+                that makes complex technology accessible and clear.
+            </p>
+            <p class="cv__text description__paragraph">
+                I collaborate closely with developers and product managers to align design solutions with 
+                <span class="cv__text_bold">business and technical goals</span>.
+            </p>
         </section>
 
         <section class="experience">
@@ -115,8 +123,19 @@
 
             <div class="education">
                 <div class="education__part">
+                   <a href="https://quantpi.com" target="_blank">
+                    <img class="education__sber-logo" src="./images/__icon__quantpi.svg" alt="QuantPi logo">
+                    </a>
+                    <h3 class="education__period">2022 – present</h3>
+                    <p class="education__place">QuantPi (AI Startup, Saarbrücken, Germany)</p>
+                    <p class="education__vacancy">Senior UI / UX Designer</p>
+                    <p class="education__period">Designing and developing an <span class="cv__text_bold">AI Platform for trustworthy and responsible AI</span>. 
+        Focus on product design, interactive dashboards, and user experience for enterprise solutions.</p>
+                </div>
+
+                <div class="education__part">
                     <img class="education__sber-logo" src="./images/__icon__sber.svg" alt="sberlogo">
-                    <h3 class="education__period">2018 - to present</h3>
+                    <h3 class="education__period">2018 - 2022</h3>
                     <p class="education__place">Sber (Finance department)</p>
                     <p class="education__vacancy">UI / UX designer (Agile)</p>
                     <p class="education__period">Design of&nbsp;an&nbsp;internal financial platform for dozens
@@ -131,14 +150,6 @@
                     <p class="education__vacancy">Graphic designer</p>
                     <p class="education__period">Promotion of&nbsp;the division&rsquo;s products (presentations, videos,
                         training content)</p>
-                </div>
-
-                <div class="education__part">
-                    <img class="education__sber-logo" src="./images/__icon__sber.svg" alt="sberlogo">
-                    <h3 class="education__period">2011 - 2016</h3>
-                    <p class="education__place">Sber (Financial Management Division)</p>
-                    <p class="education__vacancy">Financier</p>
-                    <p class="education__period">Creation and automation of&nbsp;financial statements</p>
                 </div>
             </div>
 
@@ -328,6 +339,61 @@
 
         </section>
     </main>
+
+<!-- Поставь ПЕРЕД </body> -->
+<script>
+  // Ждём полной загрузки всего (в т.ч. внешних скриптов)
+  window.addEventListener('load', () => {
+    const btn = document.getElementById('downloadDOCX');
+    if (!btn) return;
+
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      // Клонируем только контент резюме (без хедера)
+      const mainEl = document.querySelector('.main');
+      if (!mainEl) return;
+      const cloned = mainEl.cloneNode(true);
+
+      // Пробуем подтянуть CSS по абсолютному URL из <link>
+      let cssText = '';
+      try {
+        const cssLink = document.querySelector('link[href*="pages/index.css"]');
+        if (cssLink && cssLink.href) {
+          const res = await fetch(cssLink.href, { cache: 'no-store' });
+          if (res.ok) cssText = await res.text();
+        }
+      } catch (err) {
+        console.warn('CSS not inlined into DOCX:', err);
+      }
+
+      // Собираем HTML для конвертации
+      const html =
+`<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  /* Word лучше дружит с системными шрифтами */
+  body { font-family: Arial, Helvetica, sans-serif; }
+  ${cssText}
+</style>
+</head>
+<body class="body">
+${cloned.outerHTML}
+</body>
+</html>`;
+
+      try {
+        const blob = window.htmlDocx.asBlob(html, { orientation: 'portrait' });
+        window.saveAs(blob, 'CV_Tolstykh.docx');
+      } catch (err) {
+        console.error('DOCX export failed:', err);
+        alert('Не удалось сформировать DOCX. Открой страницу через локальный сервер (Live Server) или попробуй ещё раз.');
+      }
+    });
+  });
+</script>
 </body>
 
 </html>
